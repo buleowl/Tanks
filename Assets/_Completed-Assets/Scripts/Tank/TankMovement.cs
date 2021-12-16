@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Tanks;
+using UnityEngine;
 
 namespace Complete
 {
@@ -19,10 +20,20 @@ namespace Complete
         private float m_TurnInputValue;             // The current value of the turn input.
         private float m_OriginalPitch;              // The pitch of the audio source at the start of the scene.
         private ParticleSystem[] m_particleSystems; // References to all the particles systems used by the Tanks
+        
+        //設定坦克變數抓砲台
+        public GameObject player;
+        public GameObject tankTurret;
+        public Transform tankT;
 
         private void Awake ()
         {
             m_Rigidbody = GetComponent<Rigidbody> ();
+            //抓取砲台transform
+            player = this.gameObject;
+            tankTurret = transform.FindAnyChild<Transform>("TankTurret").gameObject;
+            
+            //tankT = tankTurret.transform;
         }
 
 
@@ -112,6 +123,7 @@ namespace Complete
         {
             // Adjust the rigidbodies position and orientation in FixedUpdate.
             Move ();
+            
             Turn ();
         }
 
@@ -130,12 +142,14 @@ namespace Complete
         {
             // Determine the number of degrees to be turned based on the input, speed and time between frames.
             float turn = m_TurnInputValue * m_TurnSpeed * Time.deltaTime;
-
+            tankTurret.transform.Rotate(0f,turn,0f);
             // Make this into a rotation in the y axis.
-            Quaternion turnRotation = Quaternion.Euler (0f, turn, 0f);
+           // Quaternion turnRotation = Quaternion.Euler (0f, turn, 0f);
 
             // Apply this rotation to the rigidbody's rotation.
-            m_Rigidbody.MoveRotation (m_Rigidbody.rotation * turnRotation);
+            //m_Rigidbody.MoveRotation (m_Rigidbody.rotation * turnRotation);
+
+            
         }
     }
 }
