@@ -5594,7 +5594,7 @@ MonoBehaviour:
   m_PitchRange: 0.1
   player: {fileID: 4148478340787971065}
   tankTurret: {fileID: 0}
-  tankT: {fileID: 0}
+  tankFireT: {fileID: 0}
 --- !u!114 &4148478340799205817
 MonoBehaviour:
   m_ObjectHideFlags: 0

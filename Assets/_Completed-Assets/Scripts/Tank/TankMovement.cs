@@ -24,7 +24,7 @@ namespace Complete
         //設定坦克變數抓砲台
         public GameObject player;
         public GameObject tankTurret;
-        public Transform tankT;
+        public GameObject tankFireT;
 
         private void Awake ()
         {
@@ -32,7 +32,7 @@ namespace Complete
             //抓取砲台transform
             player = this.gameObject;
             tankTurret = transform.FindAnyChild<Transform>("TankTurret").gameObject;
-            
+            tankFireT = transform.FindAnyChild<Transform>("FireTransform").gameObject;
             //tankT = tankTurret.transform;
         }
 
@@ -143,6 +143,7 @@ namespace Complete
             // Determine the number of degrees to be turned based on the input, speed and time between frames.
             float turn = m_TurnInputValue * m_TurnSpeed * Time.deltaTime;
             tankTurret.transform.Rotate(0f,turn,0f);
+            tankFireT.transform.Rotate(0f, turn, 0f);
             // Make this into a rotation in the y axis.
            // Quaternion turnRotation = Quaternion.Euler (0f, turn, 0f);
 
