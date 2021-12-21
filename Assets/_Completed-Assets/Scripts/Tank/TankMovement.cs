@@ -145,7 +145,11 @@ namespace Complete
             // Make this into a rotation in the y axis.
             Quaternion turnRotation = Quaternion.Euler (0f, turn, 0f);
             tankTurret.transform.Rotate(0f,turn,0f,Space.Self);
+<<<<<<< Updated upstream
             tankFireT.transform.Rotate(0f, turn, 0f, Space.Self);
+=======
+            //tankFireT.transform.Rotate(0f, turn, 0f, Space.World);
+>>>>>>> Stashed changes
 
             // Apply this rotation to the rigidbody's rotation.
             //m_Rigidbody.MoveRotation (m_Rigidbody.rotation * turnRotation);
